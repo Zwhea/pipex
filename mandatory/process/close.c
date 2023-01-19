@@ -6,7 +6,7 @@
 /*   By: wangthea <wangthea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 20:33:48 by wangthea          #+#    #+#             */
-/*   Updated: 2023/01/12 19:55:35 by wangthea         ###   ########.fr       */
+/*   Updated: 2023/01/19 16:45:08 by wangthea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 void	close_fds(t_pipex *data, int i)
 {
-	if (i <= 0)
-		return ;
-	else if (i == 1)
-		close(data->fds[i - 1][1]);
-	else
+	int	j;
+
+	j = 0;
+	while (j < data->nb_of_commands - 1)
 	{
-		close(data->fds[i - 1][1]);
-		close(data->fds[i - 2][0]);
+		if (j != i - 1)
+			close(data->fds[j][0]);
+		if (j != i)
+			close(data->fds[j][1]);
+		j++;
 	}
 }
 
