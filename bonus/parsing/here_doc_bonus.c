@@ -6,7 +6,7 @@
 /*   By: twang <twang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 19:44:48 by wangthea          #+#    #+#             */
-/*   Updated: 2023/01/18 16:38:53 by twang            ###   ########.fr       */
+/*   Updated: 2023/01/23 10:59:42 by twang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ void	get_here_doc(char *av, t_pipex *data)
 	{
 		ft_dprintf(1, "here_doc> ");
 		buffer = get_next_line(0);
-		if (buffer < 0)
+		if (!buffer)
 			exit(1);
 		if (!ft_strncmp(av, buffer, ft_strlen(buffer) - 1))
 			break ;
-		ft_dprintf(file, "%s\n", buffer);
+		ft_dprintf(file, "%s", buffer);
 		free(buffer);
 	}
 	free(buffer);

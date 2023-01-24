@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   childs_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wangthea <wangthea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: twang <twang@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 20:34:34 by wangthea          #+#    #+#             */
-/*   Updated: 2023/01/19 17:47:33 by wangthea         ###   ########.fr       */
+/*   Updated: 2023/01/20 11:49:16 by twang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ static void	duplicate_fds(t_pipex *data, int i)
 void	wait_for_process_ids(t_pipex *data)
 {
 	int	i;
-	int status;
+	int	status;
 
 	i = 0;
 	status = 0;
 	while (i < data->nb_of_commands)
 	{
- 		waitpid(data->process_ids[i], &status, 0);
- 		if (WEXITSTATUS(status) && i == data->nb_of_commands - 1)
- 			exit(127);
+		waitpid(data->process_ids[i], &status, 0);
+		if (WEXITSTATUS(status) && i == data->nb_of_commands - 1)
+			exit(127);
 		i++;
 	}
 }
